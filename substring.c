@@ -21,7 +21,7 @@ int main(int argc, char *argv[]) {
     string1 = argv[1];
     string2 = argv[2];
 
-    //is is what now?
+    //is it what now?
     substring = sub_string(string1, string2);
 
     if (substring == 1) {
@@ -37,27 +37,29 @@ int main(int argc, char *argv[]) {
 
 //string length!
 double string_length(char* string) {
+    
     char current_char = 'a';
     double len = 0.0;
     int i = 0;
+    
     while (current_char != '\0') {
         current_char = string[i];
         len += 1;
         i ++;
     }
 
-    //it that this algo adds and extra value to the length
-    //so we simply minux it :D
     return len;
 }
 
-//C does not have a bool type apparently so I am going to use an int 
-//better error handling anyway (gives me a two!)
 int sub_string(char* string1, char* string2) {
-    /* will determine if string2 is a sub string of string1 */
+    /* 
+     * will determine if string2 is a sub string of string1 
+     * returns 1 if substring 0 if not substring or 2 if 
+     * anther error occured 
+     */
     
     //if either string is null I am calling this an error
-    //could technically return true 
+    //could technically return true :| 
     if (string1 == NULL || string2 == NULL) {
         return 2;
     }
@@ -73,7 +75,7 @@ int sub_string(char* string1, char* string2) {
 
             //loop through the second string
             for (int j = 0; j<string_length(string2); j++) { 
-                //if count check is the same lengthe as string 2 we have a 
+                //if count check is the same length as string 2 we have a 
                 //sub string!
                 if (count_check == string_length(string2) - 1) { //This minus one seems magical 
                                                                  //It is not it is here because I don't want to 
@@ -86,7 +88,7 @@ int sub_string(char* string1, char* string2) {
                 } else if (string1[i+j] == string2[j]) {
                     count_check ++;
 
-                //if we got to here something it's not a substring but we can keep looking
+                //if we got to here it's not a substring but we can keep looking
                 } else {
                     break;
                 }
